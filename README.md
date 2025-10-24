@@ -24,7 +24,7 @@ Phase 1 of this compiler project implements the scanner (lexical analyzer). The 
 
 - No further compilation or code generation in this phase.
 
-*Repository layout* 
+***Repository layout*** 
 - src/                 — C++ source code for the scanner
   - scanner.cpp
 - target_level.c       — specifying the C-code-level we're targetting
@@ -33,10 +33,9 @@ Phase 1 of this compiler project implements the scanner (lexical analyzer). The 
    - example_tokens.txt
    - other code examples (only .c files) 
 - README.md
-- LICENSE
 
 
-*Notes and next steps*
+***Notes and next steps***
 
 - The scanner currently recognizes:
       
