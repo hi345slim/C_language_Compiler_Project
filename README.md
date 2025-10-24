@@ -3,29 +3,28 @@
 Phase 1 of this compiler project implements the scanner (lexical analyzer). The scanner is written in C++ and targets C source input (specifically, the C code level as specified in the file target_level.c). The implementation utilizes a basic, compatible C token set of different classes; adjust the (keyword/operator/../ etc.) sets for a different standard as needed.
 
 
-Phase 1 requirement
+*Phase 1 requirement*
 
 
 - Input: a C source file.
 - Output: a `.txt` file that lists each token and its token class.
 - Token output format
-  Each line in the output file contains one token (per line) and structured as follows:
+  Each line in the output file contains one token (per line) and structured as the following few examples:
 
-<KEYWORD, int>
 
-<KEYWORD, main>
+`<KEYWORD, int>`
 
-<SPECIAL CHARACTER, (>
+`<KEYWORD, main>`
 
-<SPECIAL CHARACTER, )>
+`<SPECIAL CHARACTER, (>`
 
-<SPECIAL CHARACTER, {>
+`<SPECIAL CHARACTER, )>`
 
-......etc.
+`<SPECIAL CHARACTER, {>`
 
 - No further compilation or code generation in this phase.
 
-Repository layout 
+*Repository layout* 
 - src/                 — C++ source code for the scanner
   - scanner.cpp
 - target_level.c       — specifying the C-code-level we're targetting
@@ -37,18 +36,18 @@ Repository layout
 - LICENSE
 
 
-Notes and next steps
+*Notes and next steps*
 
 - The scanner currently recognizes:
       
    - C identifiers and this list of common C keywords  :
       
-      {"auto", "break", "case", "char", "const",
-        "continue", "default", "do", "double", "else",
-        "enum", "extern", "float", "for", "goto", "if", 
-        "int", "long", "register", "return", "short", "signed",
-        "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned",
-        "void", "volatile","while" }
+      { `auto`, `break`, `case`, `char`, `const`,
+        `continue`, `default`, `do`, `double`, `else`,
+        `enum`, `extern`, `float`, `for`, `goto`, `if`, 
+        `int`, `long`, `register`, `return`, `short`, `signed`,
+        `sizeof`, `static`, `struct`, `switch`, `typedef`, `union`, `unsigned`,
+        `void`, `volatile`,`while` }
 
    - Preprocessor directives
       
@@ -58,25 +57,25 @@ Notes and next steps
       
    - operators (Arithmetic/ Logical /Bitwise) listed as follows :
 
-      '{
+      {
       
-      '+', '-', '*', '/', '=', '<', '>','%','^',
+      `+`, `-`, `*`, `/`, `=`, `<`, `>`,`%`,`^`,
       
-      '|' , '&','~', '!',
+      `|` , `&`,`~`, `!`,
       
-      "++", "--","<<",">>",  "==", "&&", "||",  
+      `++`, `--`,`<<`,`>>`,  `==`, `&&`, `||`,  
       
-      "+=", "-=", "*=", "/=", "%=", 
+      `+=`, `-=`, `*=`, `/=`, `%=`, 
       
-      "&=", "|=", "^=", "<<=", ">>=", "!=", 
+      `&=`, `|=`, `^=`, `<<=`, `>>=`, `!=`, 
       
-      ">=", "<=","pow" 
+      `>=`, `<=`,`pow` 
       
-      }'
+      }
       
    - delimiters(some call them as special characters as well) (common set; tweak as needed) listed also as follows : 
 
-      '{ '( ', ')' , '{' ,  '}' ,  ';' ,  ',' ,  '#',  '.', '[' , ']' }'
+      {  `(`, `)` , `{` ,  `}` ,  `;` ,  `,` ,  `#`,  `.`, `[` , `] `}
 
 - Finally, If no output file is specified, the scanner defaults to `tokens.txt` in the current directory.
 - The scanner should not output the `tokens.txt` (for now) in only the following 2 cases: 
