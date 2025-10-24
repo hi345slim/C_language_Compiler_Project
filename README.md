@@ -12,10 +12,15 @@ Phase 1 requirement
   Each line in the output file contains one token (per line) and structured as follows:
 
 <KEYWORD, int>
+
 <KEYWORD, main>
+
 <SPECIAL CHARACTER, (>
+
 <SPECIAL CHARACTER, )>
+
 <SPECIAL CHARACTER, {>
+
 ......etc.
 
 - No further compilation or code generation in this phase.
