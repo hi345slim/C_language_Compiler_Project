@@ -25,7 +25,7 @@ Phase 1 requirement
 
 - No further compilation or code generation in this phase.
 
-Repository layout (suggested)
+Repository layout 
 - src/                 — C++ source code for the scanner
   - scanner.cpp
 - target_level.c       — specifying the C-code-level we're targetting
@@ -35,23 +35,57 @@ Repository layout (suggested)
    - other code examples (only .c files) 
 - README.md
 - LICENSE
-- .gitignore
 
 
-Build and run (local)
-1. Build:
-   mkdir -p build
-   g++ -std=c++17 -O2 -Iinclude -o build/scanner src/scanner.cpp
 
-2. Run:
-   ./build/scanner examples/example.c examples/example_tokens.txt
+// Predefined lists for keywords, operators, and special characters
+    const unordered_set<string> keywords = {
+        "auto", "break", "case", "char", "const",
+        "continue", "default", "do", "double", "else",
+        "enum", "extern", "float", "for", "goto", "if", 
+        "int", "long", "register", "return", "short", "signed",
+        "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned",
+        "void", "volatile","while"
+    };
+    const unordered_set<char> single_char_operators = {'+', '-', '*', '/', '=', '<', '>','%','^', '|' , '&','~', '!'};
+    const unordered_set<string> multi_char_operators = {"++", "--","<<",">>",  "==", "&&", "||",  "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", "!=", ">=", "<=","pow"};
+    const unordered_set<char> special_chars = {'(', ')', '{', '}', ';', ',', '#'};
 
-If no output file is specified, the scanner defaults to `tokens.txt` in the current directory.
+   
+
 
 Notes and next steps
+
 - The scanner currently recognizes:
-  - C identifiers and a list of common C keywords (listed in the code)
-  - Preprocessor directives
-  - integer and floating numeric literals (basic recognition)
-  - single-line (`// ...`) and multi-line (`/* ... */`) comments (comments are classified as tokens with their contents certainly skipped)
-  - operators (Arithmetic/ Logical /Bitwise) and delimiters(some call them as special characters as well) (common set; tweak as needed)
+      
+      - C identifiers and this list of common C keywords  :
+      
+      {"auto", "break", "case", "char", "const",
+        "continue", "default", "do", "double", "else",
+        "enum", "extern", "float", "for", "goto", "if", 
+        "int", "long", "register", "return", "short", "signed",
+        "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned",
+        "void", "volatile","while" }
+
+      - Preprocessor directives
+      
+      - integer and floating numeric literals (basic recognition)
+      
+      - single-line (`// ...`) and multi-line (`/* ... */`) comments (comments are classified as tokens with their contents certainly skipped)
+      
+      - operators (Arithmetic/ Logical /Bitwise) listed as follows :
+
+      {'+', '-', '*', '/', '=', '<', '>','%','^', '|' , '&','~', '!',"++", "--","<<",">>",  "==", "&&", "||",  "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", "!=", ">=", "<=","pow"}
+      
+      - delimiters(some call them as special characters as well) (common set; tweak as needed) listed also as follows : 
+
+      {'(', ')', '{', '}', ';', ',', '#'}
+
+- Finally, If no output file is specified, the scanner defaults to `tokens.txt` in the current directory.
+- The scanner should not output the `tokens.txt` (for now) in only the following 2 cases: 
+      
+      A- if an error of an unexpected character occurs.
+      
+      B- if an error of a numeric constant with multiple / more than one decimal  point occurs.  
+Anyway, It should tell the user through the terminal if any of these 2 cases exists and specify which case has existed. 
+One last note: if both cases do exist in your C-code, Our scanner detects the earlier one according to their positions in the code (  the earlier to show up in the code ), reports it, and then it's done there.   

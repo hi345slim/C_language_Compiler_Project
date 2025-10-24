@@ -117,35 +117,38 @@ void scan(const string& source_code)
         // Check 4: OPERATORS & SPECIAL CHARACTERS
         // ---------------------------------
         // Check for MULTI-character operators
-        string triple_char_op ="0";
-        string double_char_op ="0";
+        
+        // A: Check for TRIPLE-character operators
         if (current_char_index + 2 < source_code.length())
         { 
+            string triple_char_op ="0";
             triple_char_op = source_code.substr(current_char_index, 3);
-        }
-        if (current_char_index +1 < source_code.length())
-        {
-            double_char_op = source_code.substr(current_char_index, 2);
-        
-        }
-         // Check for TRIPLE-character operators
+            
                 
-        if ( multi_char_operators.find(triple_char_op) != multi_char_operators.end())
-                    {
-                    addToken(triple_char_op, "OPERATOR");
-                    current_char_index += 3;
-                    continue;
-                    }
-            // Check for DOUBLE-character operators
+            if ( multi_char_operators.find(triple_char_op) != multi_char_operators.end())
+                        {
+                        addToken(triple_char_op, "OPERATOR");
+                        current_char_index += 3;
+                        continue;
+                        }
+        }
+        // B: Check for DOUBLE-character operators
+        if (current_char_index +1 < source_code.length())
+        {   
+            string double_char_op ="0";
+            double_char_op = source_code.substr(current_char_index, 2);
+            if ( multi_char_operators.find(double_char_op) != multi_char_operators.end())
+                        {
+                        addToken(double_char_op, "OPERATOR");
+                        current_char_index += 2;
+                        continue;
+                        }
+        }
+            
                     
-                    else if (current_char_index + 1 < source_code.length() && multi_char_operators.find(double_char_op) != multi_char_operators.end())
-                    {
-                    addToken(double_char_op, "OPERATOR");
-                    current_char_index += 2;
-                    continue;
-                    }
-            // Check for SINGLE-character operators (one-char-long)
-                else if (single_char_operators.find(currentChar)!= single_char_operators.end())
+                    
+        // Check for SINGLE-character operators (one-char-long)
+            if (single_char_operators.find(currentChar)!= single_char_operators.end())
                     {
                     string currentChar_string (1, currentChar);
                     addToken(currentChar_string, "OPERATOR");
@@ -271,7 +274,7 @@ int main() {
             }
     // Finally ALL GOES FINE , our scanner should output a .txt file. 
     //For now, we'll name it "tokens.txt" 
-        ofstream output_file("tokensat.txt");
+        ofstream output_file("tokens.txt");
         if (!output_file.is_open())
             {
             cerr << "Error: Could not create output file 'tokens.txt'" << endl;

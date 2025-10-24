@@ -20,6 +20,7 @@ int main() {
            a block
            comment */
         x = x-3;
+        int _xyzw;
     } else {
         y = 3.1; // Another comment
     }
