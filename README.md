@@ -58,11 +58,25 @@ Notes and next steps
       
    - operators (Arithmetic/ Logical /Bitwise) listed as follows :
 
-      {'+', '-', '*', '/', '=', '<', '>','%','^', '|' , '&','~', '!',"++", "--","<<",">>",  "==", "&&", "||",  "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", "!=", ">=", "<=","pow"}
+      '{
+      
+      '+', '-', '*', '/', '=', '<', '>','%','^',
+      
+      '|' , '&','~', '!',
+      
+      "++", "--","<<",">>",  "==", "&&", "||",  
+      
+      "+=", "-=", "*=", "/=", "%=", 
+      
+      "&=", "|=", "^=", "<<=", ">>=", "!=", 
+      
+      ">=", "<=","pow" 
+      
+      }'
       
    - delimiters(some call them as special characters as well) (common set; tweak as needed) listed also as follows : 
 
-      {'(', ')', '{', '}', ';', ',', '#'}
+      '{ '( ', ')' , '{' ,  '}' ,  ';' ,  ',' ,  '#',  '.', '[' , ']' }'
 
 - Finally, If no output file is specified, the scanner defaults to `tokens.txt` in the current directory.
 - The scanner should not output the `tokens.txt` (for now) in only the following 2 cases: 
@@ -70,5 +84,5 @@ Notes and next steps
    A- if an error of an unexpected character occurs.
       
    B- if an error of a numeric constant with multiple / more than one decimal  point occurs.  
-Anyway, It should tell the user through the terminal if any of these 2 cases exists and specify which case has existed. 
-One last note: if both cases do exist in your C-code, Our scanner detects the earlier one according to their positions in the code (  the earlier to show up in the code ), reports it, and then it's done there.   
+   Anyway, It should tell the user through the terminal if any of these 2 cases exists and specify which case has existed. 
+   One last note: if both cases do exist in your C-code, Our scanner detects the earlier one according to their positions in the code (  the earlier to show up in the code ), reports it, and then it's done there.   

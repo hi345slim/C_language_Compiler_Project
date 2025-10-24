@@ -48,7 +48,7 @@ void scan(const string& source_code)
     };
     const unordered_set<char> single_char_operators = {'+', '-', '*', '/', '=', '<', '>','%','^', '|' , '&','~', '!'};
     const unordered_set<string> multi_char_operators = {"++", "--","<<",">>",  "==", "&&", "||",  "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", "!=", ">=", "<=","pow"};
-    const unordered_set<char> special_chars = {'(', ')', '{', '}', ';', ',', '#'};
+    const unordered_set<char> special_chars = {'(', ')', '{', '}', ';', ',', '#',  '.', '[' , ']'};
 
     // Loop through the entire source code string
     while (current_char_index < source_code.length())
